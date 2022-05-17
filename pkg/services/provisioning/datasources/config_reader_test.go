@@ -17,6 +17,7 @@ import (
 	"github.com/grafana/grafana/pkg/services/sqlstore"
 	"github.com/grafana/grafana/pkg/util"
 
+	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/require"
 )
 
@@ -247,7 +248,7 @@ func getDataSourceService(t *testing.T) datasources.DataSourceService {
 	secretsService := secretsManager.SetupTestService(t, fakes.NewFakeSecretsStore())
 
 	mockedPermissions := acmock.NewMockedPermissionsService()
-	mockedPermissions.On("SetPermissions").Return(nil, nil)
+	mockedPermissions.On("SetPermissions", mock.Anything).Return(nil, nil)
 
 	dsService := dsservice.ProvideService(sqlStore, secretsService, secretsStore, nil, featuremgmt.WithFeatures(), acmock.New(), mockedPermissions)
 
