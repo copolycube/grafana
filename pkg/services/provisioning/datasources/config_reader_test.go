@@ -39,7 +39,11 @@ func TestDatasourceAsConfig(t *testing.T) {
 		sqlStore := sqlstore.InitTestDB(t)
 		secretsStore := kvstore.SetupTestService(t)
 		secretsService := secretsManager.SetupTestService(t, fakes.NewFakeSecretsStore())
-		dsService := datasources.ProvideService(sqlStore, secretsService, secretsStore, nil, featuremgmt.WithFeatures(), acmock.New(), acmock.NewMockedPermissionsService())
+
+		mockedPermissions := acmock.NewMockedPermissionsService()
+		mockedPermissions.On("SetPermissions").Return(nil, nil)
+
+		dsService := datasources.ProvideService(sqlStore, secretsService, secretsStore, nil, featuremgmt.WithFeatures(), acmock.New(), mockedPermissions)
 
 		store := &spyStore{}
 		orgStore := &mockOrgStore{ExpectedOrg: &models.Org{Id: 1}}
@@ -60,7 +64,11 @@ func TestDatasourceAsConfig(t *testing.T) {
 		sqlStore := sqlstore.InitTestDB(t)
 		secretsStore := kvstore.SetupTestService(t)
 		secretsService := secretsManager.SetupTestService(t, fakes.NewFakeSecretsStore())
-		dsService := datasources.ProvideService(sqlStore, secretsService, secretsStore, nil, featuremgmt.WithFeatures(), acmock.New(), acmock.NewMockedPermissionsService())
+
+		mockedPermissions := acmock.NewMockedPermissionsService()
+		mockedPermissions.On("SetPermissions").Return(nil, nil)
+
+		dsService := datasources.ProvideService(sqlStore, secretsService, secretsStore, nil, featuremgmt.WithFeatures(), acmock.New(), mockedPermissions)
 
 		store := &spyStore{
 			items: []*models.DataSource{{Name: "My datasource name", OrgId: 1, Id: 1, Uid: util.GenerateShortUID()}},
@@ -82,7 +90,11 @@ func TestDatasourceAsConfig(t *testing.T) {
 		sqlStore := sqlstore.InitTestDB(t)
 		secretsStore := kvstore.SetupTestService(t)
 		secretsService := secretsManager.SetupTestService(t, fakes.NewFakeSecretsStore())
-		dsService := datasources.ProvideService(sqlStore, secretsService, secretsStore, nil, featuremgmt.WithFeatures(), acmock.New(), acmock.NewMockedPermissionsService())
+
+		mockedPermissions := acmock.NewMockedPermissionsService()
+		mockedPermissions.On("SetPermissions").Return(nil, nil)
+
+		dsService := datasources.ProvideService(sqlStore, secretsService, secretsStore, nil, featuremgmt.WithFeatures(), acmock.New(), mockedPermissions)
 
 		store := &spyStore{}
 		orgStore := &mockOrgStore{}
@@ -101,7 +113,11 @@ func TestDatasourceAsConfig(t *testing.T) {
 		sqlStore := sqlstore.InitTestDB(t)
 		secretsStore := kvstore.SetupTestService(t)
 		secretsService := secretsManager.SetupTestService(t, fakes.NewFakeSecretsStore())
-		dsService := datasources.ProvideService(sqlStore, secretsService, secretsStore, nil, featuremgmt.WithFeatures(), acmock.New(), acmock.NewMockedPermissionsService())
+
+		mockedPermissions := acmock.NewMockedPermissionsService()
+		mockedPermissions.On("SetPermissions").Return(nil, nil)
+
+		dsService := datasources.ProvideService(sqlStore, secretsService, secretsStore, nil, featuremgmt.WithFeatures(), acmock.New(), mockedPermissions)
 
 		store := &spyStore{items: []*models.DataSource{{Name: "Graphite", OrgId: 1, Id: 1}}}
 		orgStore := &mockOrgStore{}
@@ -120,7 +136,11 @@ func TestDatasourceAsConfig(t *testing.T) {
 		sqlStore := sqlstore.InitTestDB(t)
 		secretsStore := kvstore.SetupTestService(t)
 		secretsService := secretsManager.SetupTestService(t, fakes.NewFakeSecretsStore())
-		dsService := datasources.ProvideService(sqlStore, secretsService, secretsStore, nil, featuremgmt.WithFeatures(), acmock.New(), acmock.NewMockedPermissionsService())
+
+		mockedPermissions := acmock.NewMockedPermissionsService()
+		mockedPermissions.On("SetPermissions").Return(nil, nil)
+
+		dsService := datasources.ProvideService(sqlStore, secretsService, secretsStore, nil, featuremgmt.WithFeatures(), acmock.New(), mockedPermissions)
 
 		orgStore := &mockOrgStore{}
 		dc := newDatasourceProvisioner(logger, dsService, orgStore)
@@ -132,7 +152,11 @@ func TestDatasourceAsConfig(t *testing.T) {
 		sqlStore := sqlstore.InitTestDB(t)
 		secretsStore := kvstore.SetupTestService(t)
 		secretsService := secretsManager.SetupTestService(t, fakes.NewFakeSecretsStore())
-		dsService := datasources.ProvideService(sqlStore, secretsService, secretsStore, nil, featuremgmt.WithFeatures(), acmock.New(), acmock.NewMockedPermissionsService())
+
+		mockedPermissions := acmock.NewMockedPermissionsService()
+		mockedPermissions.On("SetPermissions").Return(nil, nil)
+
+		dsService := datasources.ProvideService(sqlStore, secretsService, secretsStore, nil, featuremgmt.WithFeatures(), acmock.New(), mockedPermissions)
 
 		store := &spyStore{}
 		orgStore := &mockOrgStore{}
@@ -150,7 +174,11 @@ func TestDatasourceAsConfig(t *testing.T) {
 		sqlStore := sqlstore.InitTestDB(t)
 		secretsStore := kvstore.SetupTestService(t)
 		secretsService := secretsManager.SetupTestService(t, fakes.NewFakeSecretsStore())
-		dsService := datasources.ProvideService(sqlStore, secretsService, secretsStore, nil, featuremgmt.WithFeatures(), acmock.New(), acmock.NewMockedPermissionsService())
+
+		mockedPermissions := acmock.NewMockedPermissionsService()
+		mockedPermissions.On("SetPermissions").Return(nil, nil)
+
+		dsService := datasources.ProvideService(sqlStore, secretsService, secretsStore, nil, featuremgmt.WithFeatures(), acmock.New(), mockedPermissions)
 
 		store := &spyStore{}
 		orgStore := &mockOrgStore{}
@@ -171,7 +199,11 @@ func TestDatasourceAsConfig(t *testing.T) {
 		sqlStore := sqlstore.InitTestDB(t)
 		secretsStore := kvstore.SetupTestService(t)
 		secretsService := secretsManager.SetupTestService(t, fakes.NewFakeSecretsStore())
-		dsService := datasources.ProvideService(sqlStore, secretsService, secretsStore, nil, featuremgmt.WithFeatures(), acmock.New(), acmock.NewMockedPermissionsService())
+
+		mockedPermissions := acmock.NewMockedPermissionsService()
+		mockedPermissions.On("SetPermissions").Return(nil, nil)
+
+		dsService := datasources.ProvideService(sqlStore, secretsService, secretsStore, nil, featuremgmt.WithFeatures(), acmock.New(), mockedPermissions)
 
 		store := &spyStore{items: []*models.DataSource{{Name: "old-graphite", OrgId: 1, Id: 1}, {Name: "old-graphite2", OrgId: 1, Id: 2}}}
 		orgStore := &mockOrgStore{}
@@ -190,7 +222,11 @@ func TestDatasourceAsConfig(t *testing.T) {
 		sqlStore := sqlstore.InitTestDB(t)
 		secretsStore := kvstore.SetupTestService(t)
 		secretsService := secretsManager.SetupTestService(t, fakes.NewFakeSecretsStore())
-		dsService := datasources.ProvideService(sqlStore, secretsService, secretsStore, nil, featuremgmt.WithFeatures(), acmock.New(), acmock.NewMockedPermissionsService())
+
+		mockedPermissions := acmock.NewMockedPermissionsService()
+		mockedPermissions.On("SetPermissions").Return(nil, nil)
+
+		dsService := datasources.ProvideService(sqlStore, secretsService, secretsStore, nil, featuremgmt.WithFeatures(), acmock.New(), mockedPermissions)
 
 		store := &spyStore{items: []*models.DataSource{{Name: "Graphite", OrgId: 1, Id: 1}, {Name: "old-graphite2", OrgId: 1, Id: 2}}}
 		orgStore := &mockOrgStore{}
